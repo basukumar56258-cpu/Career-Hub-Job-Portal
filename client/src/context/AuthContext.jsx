@@ -1,0 +1,4 @@
+import {createContext,useContext,useState} from 'react'; import api from '../api';
+const C=createContext(null);
+export function AuthProvider({children}){const [user,setUser]=useState(()=>JSON.parse(localStorage.getItem('careerhub_user')||'null'));const login=async(data)=>{const r=await api.post('/auth/login',data);localStorage.setItem('careerhub_token',r.data.token);localStorage.setItem('careerhub_user',JSON.stringify(r.data.user));setUser(r.data.user);return r.data};const register=async(data)=>{const r=await api.post('/auth/register',data);localStorage.setItem('careerhub_token',r.data.token);localStorage.setItem('careerhub_user',JSON.stringify(r.data.user));setUser(r.data.user);return r.data};const logout=()=>{localStorage.removeItem('careerhub_token');localStorage.removeItem('careerhub_user');setUser(null)};return <C.Provider value={{user,login,register,logout}}>{children}</C.Provider>}
+export const useAuth=()=>useContext(C);
