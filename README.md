@@ -1,131 +1,127 @@
-# CareerHub — MERN Job Portal
-
 <div align="center">
 
-![CareerHub Logo](https://img.shields.io/badge/CareerHub-Job%20Portal-0A84FF?style=for-the-badge&logo=react&logoColor=white)
+# CareerHub
 
-[![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react.dev/)
-[![Express](https://img.shields.io/badge/Express-5-000000?style=flat-square&logo=express&logoColor=white)](https://expressjs.com/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas%2FLocal-47A248?style=flat-square&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+### Find your next opportunity. Build what comes next.
+
+A modern, full-stack job portal connecting candidates with growing companies.
+
+[![React](https://img.shields.io/badge/React-19-149ECA?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-5-111111?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+
+[Features](#-what-you-can-do) · [Get started](#-get-started) · [Demo account](#-demo-account)
 
 </div>
 
-CareerHub is a modern full-stack job portal where candidates can discover jobs, apply, track their applications, and recruiters can publish roles and manage candidate pipelines smoothly.
+---
 
-## ✨ Features
+## ✨ What you can do
 
-- Candidate login and registration
-- Recruiter login and registration (opt-in security flag)
-- JWT-based authentication with role-based access control
-- Job listing, search, filtering, and detailed job pages
-- Candidate dashboard with application tracking
-- Recruiter dashboard for posting jobs and updating application status
-- REST API built with Express and MongoDB
-- Responsive UI for desktop and mobile screens
-- Demo seed data for quick local testing
+| For candidates | For recruiters |
+| --- | --- |
+| Discover and search job listings | Publish and manage job openings |
+| View role details and apply | Review applications and update candidate status |
+| Track application progress from a dashboard | Manage the hiring pipeline from a recruiter dashboard |
 
-## 🧩 Tech Stack
+CareerHub also includes secure registration and login, JWT authentication, and role-based access control.
 
-- Frontend: React + Vite
-- Backend: Node.js + Express
-- Database: MongoDB + Mongoose
-- Auth: JWT + bcrypt
-- Styling: Custom CSS
+## 🧰 Built with
 
-## 🏗️ Project Structure
+| Frontend | Backend | Data and authentication |
+| --- | --- | --- |
+| React 19, Vite, React Router | Node.js, Express 5 | MongoDB, Mongoose |
+| Lucide icons, custom CSS | REST API | JWT, bcrypt |
 
-```text
-CareerHub/
-├── client/                 # React frontend
-│   ├── src/
-│   ├── index.html
-│   ├── package.json
-│   └── vite.config.js
-├── server/                 # Express backend
-│   ├── src/
-│   ├── test/
-│   └── package.json
-├── .gitignore
-├── README.md
-├── install.bat
-├── start.bat
-├── package.json
-└── package-lock.json
-```
+## 🚀 Get started
 
-## 🚀 Local Setup
+### Requirements
 
-### Prerequisites
+- Node.js 18 or later and npm
+- MongoDB locally or a MongoDB Atlas connection
 
-- Node.js 18+
-- MongoDB running locally or a MongoDB Atlas connection
-- VS Code
+### Install
 
-### Windows quick start
-
-1. Open the project in VS Code.
-2. Run:
+From the project root:
 
 ```bash
 npm install
 npm run install:all
 ```
 
-3. Create the backend environment file:
+Create the backend environment file on Windows:
 
-```bash
-copy server\.env.example server\.env
+```powershell
+Copy-Item server\.env.example server\.env
 ```
 
-4. Update `server/.env` with your values:
+Update `server/.env` with your MongoDB connection and a private JWT secret:
 
 ```env
 PORT=5000
 NODE_ENV=development
-JWT_SECRET=your_secure_secret
+MONGO_URI=mongodb://127.0.0.1:27017/careerhub
+JWT_SECRET=replace_with_a_long_random_secret
 CLIENT_URL=http://127.0.0.1:5173
 ALLOW_RECRUITER_REGISTRATION=true
 ```
 
-5. Start the app:
+For local development, start the frontend and API together:
 
 ```bash
-start.bat
+npm run dev
 ```
 
-6. Open:
+On Windows, you can also use `start.bat` after creating `server/.env`.
 
-- Frontend: http://127.0.0.1:5173
-- Backend health: http://127.0.0.1:5000/api/health
+| Service | URL |
+| --- | --- |
+| CareerHub web app | [http://127.0.0.1:5173](http://127.0.0.1:5173) |
+| API health check | [http://127.0.0.1:5000/api/health](http://127.0.0.1:5000/api/health) |
 
-## 🔐 Demo Credentials
+## 🔐 Demo account
 
-### Recruiter
-- Email: recruiter@careerhub.local
-- Password: recruiter123
+Use the seeded recruiter account to explore recruiter features:
 
-### Candidate
-- Create a new account from the register page
+```text
+Email:    recruiter@careerhub.local
+Password: recruiter123
+```
 
-## 📸 Demo Flow
+Candidates can create an account from the registration page. Demo accounts are for local development only.
 
-- Candidate signs up/login
-- Candidate browses jobs
-- Candidate applies to a role
-- Recruiter logs in
-- Recruiter posts jobs and manages applications
-- Recruiter updates application status
+## 🗂️ Project structure
 
-## 🧪 Verification
+```text
+CareerHub/
+├── client/                 # React + Vite application
+│   └── src/
+│       ├── components/     # Shared UI components
+│       ├── context/        # Authentication state
+│       └── pages/          # Home, jobs, dashboards, and auth
+├── server/                 # Express API and MongoDB models
+│   ├── src/
+│   └── test/               # Backend integration tests
+├── package.json            # Root development scripts
+├── start.bat               # Windows quick start
+└── README.md
+```
 
-The application has been validated with backend integration tests and a successful frontend build.
+## 🧪 Tests and production build
 
-## 📚 Resources
+Run the backend test suite:
 
-- Uncodemy: https://uncodemy.com/course/full-stack-development-training-course-in-noida
-- Uncodemy: https://uncodemy.com/course/full-stack-development-training-course-in-delhi
+```bash
+npm test --prefix server
+```
+
+Build the frontend for production:
+
+```bash
+npm run build --prefix client
+```
 
 ## 📄 License
 
